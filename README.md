@@ -16,6 +16,9 @@ Nothing much to do but : **make**
 
 ### How to use :
 
+**Important** : You must remove all comments but dimensions in your matrix market file. I'll provide some workaround someday...
+
+
 *./converter -matrix\_file matrix\_market_file.mtx*
 
 or 
