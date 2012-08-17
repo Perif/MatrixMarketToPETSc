@@ -74,7 +74,7 @@ int main(int argc, char ** argv){
 		PetscPrintf(PETSC_COMM_WORLD,"Dumping vector to PETSc binary %s\n",vectorOutputFile);
 		PetscViewerBinaryOpen(PETSC_COMM_WORLD,vectorOutputFile,FILE_MODE_WRITE,&output_viewer);
 		PetscViewerSetFormat(output_viewer,PETSC_VIEWER_ASCII_INFO_DETAIL);
-		MatView(A,output_viewer);
+		VecView(b,output_viewer);
 		PetscViewerDestroy(&output_viewer);	
 	}
 	
