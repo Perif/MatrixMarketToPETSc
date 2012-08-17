@@ -16,15 +16,15 @@ Nothing much to do but : **make**
 
 ### How to use :
 
-./converter -matrix\_file matrix\_market_file.mtx
+*./converter -matrix\_file matrix\_market_file.mtx*
 
 or 
 
-./converter -vector\_file matrix\_market\_vector\_file.mtx (typically ends with _b.mtx)
+*./converter -vector\_file matrix\_market\_vector\_file.mtx (typically ends with _b.mtx)*
 
 or 
 
-./converter -matrix\_file matrix\_market\_file.mtx -vector\_file matrix_market_vector_file.mtx
+*./converter -matrix\_file matrix\_market\_file.mtx -vector\_file matrix_market_vector_file.mtx*
 
 
 The results will be placed in separate PETSc binary files (in tar.gz)
