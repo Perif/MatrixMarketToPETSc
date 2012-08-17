@@ -7,7 +7,10 @@ This is extremely useful if you have to benchmark your codes written in PETSc us
 
 ### Requirements :
 
-Working [PETSc] [3] installation (I'm using petsc-3.3-p2) compiles with scalar type complex if you intend to convert complex matrices (flag --with-scalar-type=complex during configure stage).
+Working [PETSc] [3] installation (I'm using petsc-3.3-p2)
+
+
+Compile with scalar type complex if you intend to convert complex matrices (flag --with-scalar-type=complex during configure stage).
 
 
 ### Installation :
@@ -30,7 +33,7 @@ or
 *./converter -matrix\_file matrix\_market\_file.mtx -vector\_file matrix_market_vector_file.mtx*
 
 
-The results will be placed in separate PETSc binary files (in tar.gz)
+The results will be placed in separate PETSc binary files (in gz)
 
 ### Further notes :
 
