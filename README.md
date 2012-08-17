@@ -7,7 +7,7 @@ This is extremely useful if you have to benchmark your codes written in PETSc us
 
 ### Requirements :
 
-Working [PETSc] [3] installation (I'm using petsc-3.3-p2)
+Working [PETSc] [3] installation (I'm using petsc-3.3-p2) compiles with scalar type complex if you intend to convert complex matrices (flag --with-scalar-type=complex during configure stage).
 
 
 ### Installation :

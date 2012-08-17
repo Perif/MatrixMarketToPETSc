@@ -24,7 +24,7 @@ PetscErrorCode MMTgetMatrix(char * fin, Mat * A, MatrixInfo * minfo){
 	minfo->m=m;
 	minfo->nnz=nnz;
 
-	PetscPrintf(PETSC_COMM_WORLD,"Matrix properties : m = %d, n = %d, nnz = %d\n",m,n,nnz);
+	PetscPrintf(PETSC_COMM_WORLD,"Matrix properties : m = %d, n = %d, nnz = %d, type = complex\n",m,n,nnz);
 	
 	MatCreateSeqAIJ(PETSC_COMM_SELF,m,n,PETSC_DEFAULT,PETSC_NULL,A);
 	
@@ -135,7 +135,7 @@ PetscErrorCode MMTgetMatrixReal(char * fin, Mat * A, MatrixInfo * minfo){
 	minfo->m=m;
 	minfo->nnz=nnz;
 
-	PetscPrintf(PETSC_COMM_WORLD,"Matrix properties : m = %d, n = %d, nnz = %d\n",m,n,nnz);
+	PetscPrintf(PETSC_COMM_WORLD,"Matrix properties : m = %d, n = %d, nnz = %d, type = real\n",m,n,nnz);
 	
 	MatCreateSeqAIJ(PETSC_COMM_SELF,m,n,PETSC_DEFAULT,PETSC_NULL,A);
 	
