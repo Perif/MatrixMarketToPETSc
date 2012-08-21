@@ -20,6 +20,10 @@ int main(int argc, char ** argv){
 	/* Initalize PETSc */	
 	PetscInitialize(&argc,&argv,(char *)0,help);
 		
+	if (!defined(PETSC_USE_COMPLEX)){
+		SETERRQ(PETSC_COMM_WORLD,83,"Working PETSc complex scalar library is required to use this software !\n");
+	}
+
 	/* Check how many processors are in use, one must use one node
 		 in order to converte the matrix market file into PETSc binary format */
 	MPI_Comm_size(PETSC_COMM_WORLD,&sizen);
@@ -34,7 +38,7 @@ int main(int argc, char ** argv){
 	
 	/* Check if files where provided, raise an error if not */
 	if(!flagMtx && !flagVct){
-		SETERRQ(PETSC_COMM_WORLD,1,"No matrix file neither vector one where provided, what am I supposed to convert ? Void ???\n");
+		SETERRQ(PETSC_COMM_WORLD,83,"No matrix file neither vector one where provided, what am I supposed to convert ? Void ???\n");
 	}
 	
 		
