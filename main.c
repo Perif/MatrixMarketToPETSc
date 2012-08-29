@@ -20,9 +20,9 @@ int main(int argc, char ** argv){
 	/* Initalize PETSc */	
 	PetscInitialize(&argc,&argv,(char *)0,help);
 		
-	if (!defined(PETSC_USE_COMPLEX)){
+	#if !defined(PETSC_USE_COMPLEX)
 		SETERRQ(PETSC_COMM_WORLD,83,"Working PETSc complex scalar library is required to use this software !\n");
-	}
+	#endif
 
 	/* Check how many processors are in use, one must use one node
 		 in order to converte the matrix market file into PETSc binary format */

@@ -24,9 +24,30 @@ PetscErrorCode MMTgetMatrix(char * fin, Mat * A, MatrixInfo * minfo){
 	minfo->m=m;
 	minfo->nnz=nnz;
 
+	/*Matrix reading*/
+	for (i=0; i<nnz; i++) {
+		fscanf(file,"%d %d %le %le\n",&row,&col,(double*)&r_value,(double*)&i_value);
+		row = row-1; col = col-1 ;
+		if(nztemp!=col){
+			nz=1;
+			nztemp=col;
+		} else {
+			nz++;
+		}
+		if(nz>nzmax){
+			nzmax=nz;
+		}
+	}
+
 	PetscPrintf(PETSC_COMM_WORLD,"Matrix properties : m = %d, n = %d, nnz = %d, type = complex\n",m,n,nnz);
-	
-	MatCreateSeqAIJ(PETSC_COMM_SELF,m,n,PETSC_DEFAULT,PETSC_NULL,A);
+	PetscPrintf(PETSC_COMM_WORLD,"Maximum number of NNZ on a line : %d\n",nz);
+
+	ierr = MatCreate(PETSC_COMM_WORLD,A);CHKERRQ(ierr);
+  	ierr = MatSetSizes(*A,PETSC_DECIDE,PETSC_DECIDE,m,n);CHKERRQ(ierr);
+  	ierr = MatSetFromOptions(*A);CHKERRQ(ierr);
+  	ierr = MatMPIAIJSetPreallocation(*A,nz,PETSC_NULL,nz,PETSC_NULL);CHKERRQ(ierr);
+  	ierr = MatSeqAIJSetPreallocation(*A,nz,PETSC_NULL);CHKERRQ(ierr);
+  	ierr = MatSetUp(*A);CHKERRQ(ierr);
 	
 	/*Matrix reading*/
 	for (i=0; i<nnz; i++) {
@@ -47,7 +68,6 @@ PetscErrorCode MMTgetMatrix(char * fin, Mat * A, MatrixInfo * minfo){
 			ierr = MatSetValues(*A,1,&col,1,&row,&value,INSERT_VALUES);CHKERRQ(ierr);
 		}
 	}
-	PetscPrintf(PETSC_COMM_WORLD,"Maximum number of NNZ on a line : %d\n",nz);
 	
 	
 	/*Matrix assembly*/
