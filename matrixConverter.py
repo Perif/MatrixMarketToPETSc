@@ -6,6 +6,8 @@ import re
 
 dirs = os.environ['PETSC_DIR']
 sys.path.insert(0, dirs+'/bin/pythonscripts/')
+sys.path.insert(0, dirs+'/bin/')
+
 import PetscBinaryIO
 
 converted = 'converted'
